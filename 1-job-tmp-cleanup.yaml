@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: content
+spec: 
+  schedule: "*/60 * * * *"
+jobTemplate:
+  spec:
+    template:
+      spec:
+# cleanup init containers
+       initContainers:
+       containers:
+       - name: content
+         image: alpine
+         command: echo
